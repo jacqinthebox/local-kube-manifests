@@ -1,0 +1,57 @@
+# Ignore Terraform directories and state files
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# kind temp yaml files
+*-config
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+temp.json
+temp/
+# Thumbnails
+._*
+*-config
+# Helm
+# Chart dependencies
+#/charts
+# Chart packaged files
+/*.tgz
+# Chart generated files
+#/manifests/
+#/helmfile.d/
+
+# Kubernetes
+# Generated Kubernetes YAML files
+# Exclude specific YAML files that need to be tracked
+!some-important-config.yaml
+
+# Azure Bicep
+# Bicep local cache folder
+.bicep/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (IntelliJ IDEA, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Local history directory
+.idea/**/shelf/
+flux-pat.yaml
+# every file starts with temp will be ignored (but not templates/)
+temp
+temp_*
+temp-*
+temp.*
+
+.aider*
+.env
+venv

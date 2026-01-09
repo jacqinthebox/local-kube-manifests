@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: placeholder
+  namespace: placeholder
+spec:
+  targetNamespace: placeholder
+  releaseName: placeholder # helm release name
+  interval: 5m
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  chart:
+    spec:
+      chart: base/helm/placeholder
+      version: ""
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 5m
+  postRenderers: []
+  values: {}
