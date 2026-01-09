@@ -1,0 +1,13 @@
+# yaml-language-server: disable
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: lightrag
+  namespace: cnpg-cluster # must be in the same namespace as the cluster
+spec:
+  name: lightrag
+  owner: pgadmin
+  cluster:
+    name: cnpg-cluster
+  extensions:
+    - name: vector

@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../base/primitives/namespace
+
+patches:
+  - target:
+      kind: Namespace
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: hello-flux
+      - op: replace
+        path: /metadata/labels/name
+        value: hello-flux
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1component
+        value: hello-flux-component
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1part-of
+        value: hello-flux

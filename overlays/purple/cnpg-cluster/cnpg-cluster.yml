@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-cluster
+  namespace: cnpg-cluster
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  storage:
+    size: 1Gi
+    storageClass: standard
+  bootstrap:
+    initdb:
+      database: documents #create initial db named documents
+      owner: pgadmin
+      secret:
+        name: cnpg-secret
+  monitoring:
+    enablePodMonitor: true
+  superuserSecret:
+    name: cnpg-secret

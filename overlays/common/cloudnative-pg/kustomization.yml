@@ -1,0 +1,59 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../base/primitives/namespace
+  - ../../../base/operators/flux/helm-release
+
+configMapGenerator:
+  - name: cloudnative-pg-values
+    namespace: cloudnative-pg
+    files:
+      - values.yaml
+    options:
+      disableNameSuffixHash: true
+
+patches:
+  - target:
+      kind: Namespace
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: cloudnative-pg
+      - op: replace
+        path: /metadata/labels/name
+        value: cloudnative-pg
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1component
+        value: database
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1part-of
+        value: lightrag
+
+
+  - target:
+      kind: HelmRelease
+    patch: |-
+      - op: replace
+        path: /spec/releaseName
+        value: cloudnative-pg
+      - op: replace
+        path: /metadata/name
+        value: cloudnative-pg
+      - op: replace
+        path: /metadata/namespace
+        value: cloudnative-pg
+      - op: replace
+        path: /spec/targetNamespace
+        value: cloudnative-pg
+      - op: replace
+        path: /spec/chart/spec/chart
+        value: base/helm/cloudnative-pg
+      - op: remove
+        path: /spec/values
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: cloudnative-pg-values
+            valuesKey: values.yaml

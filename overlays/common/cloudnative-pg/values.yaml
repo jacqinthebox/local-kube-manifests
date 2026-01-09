@@ -1,0 +1,5 @@
+# CloudNativePG Operator values
+replicaCount: 1
+
+crds:
+  create: true
