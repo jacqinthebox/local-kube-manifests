@@ -1,0 +1,23 @@
+# Memgraph values for LightRAG
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  enableBolt: true
+  boltPort: 7687
+
+persistentVolumeClaim:
+  createStorageClaim: true
+  storageSize: 1Gi
+  createLogStorage: false  # Logs to stdout only
+
+memgraphConfig:
+  - "--data-directory=/var/lib/memgraph/mg_data"
+  - "--also-log-to-stderr=true"
+
+resources:
+  limits:
+    memory: 2Gi
+  requests:
+    cpu: 500m
+    memory: 1Gi

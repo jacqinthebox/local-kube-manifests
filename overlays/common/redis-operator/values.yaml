@@ -1,0 +1,18 @@
+redisOperator:
+  imagePullPolicy: IfNotPresent
+  webhook: false
+  metrics:
+    enabled: true
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits: {}
+
+issuer:
+  create: false
+certmanager:
+  enabled: false
+
+tolerateAllTaints: true
