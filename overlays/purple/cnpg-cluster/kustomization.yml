@@ -7,7 +7,6 @@ resources:
   - cnpg-cluster.yml
   - lightrag-db.yml
   - lightrag-dev-db.yml
-  - nodeport-service.yml
 
 patches:
   - target:
