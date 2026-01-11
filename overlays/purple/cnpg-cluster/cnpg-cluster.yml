@@ -6,7 +6,7 @@ metadata:
   namespace: cnpg-cluster
 spec:
   instances: 1
-  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  imageName: ghcr.io/cloudnative-pg/postgresql:16-standard-bookworm  # includes pgvector
   storage:
     size: 1Gi
     storageClass: standard
