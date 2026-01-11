@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../../base/primitives/namespace
   - ../../../base/operators/flux/helm-release
+  - nodeport-service.yml
 
 configMapGenerator:
   - name: memgraph-values
